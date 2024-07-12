@@ -73,30 +73,28 @@ const serverW = (() => {
       });
   }
 
-  function addData(table_name, titles, data) {
+  async function addData(table_name, questions) {
     const requestData = {
       tableName: table_name,
-      titles: titles,
-      data: data,
+      questions: questions,
     };
 
-    return fetch(`${url}/add_data`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestData),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        throw error; // Re-throw the error to be caught by the caller
+    try {
+      const response = await fetch(`${url}/add_data`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
       });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return await response.json();
+    } catch (error) {
+      console.error("Error:", error);
+      throw error; // Re-throw the error to be caught by the caller
+    }
   }
 
   function addColumn(table_name) {
@@ -148,6 +146,55 @@ const serverW = (() => {
       });
   }
 
+  async function updateAnswer(question, answer) {
+    const requestData = {
+      question: question,
+      answer: answer,
+    };
+
+    return fetch(`${url}/update_answer`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        throw error; // Re-throw the error to be caught by the caller
+      });
+  }
+
+  async function getAnswer(question) {
+    const requestData = {
+      question: question,
+    };
+
+    return fetch(`${url}/get_answer`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        throw error; // Re-throw the error to be caught by the caller
+      });
+  }
+
   async function truncateTable() {
     // Fetch column data from the backend and return a promise
     const response = await fetch(`${url}/truncate_table`);
@@ -165,6 +212,8 @@ const serverW = (() => {
     addData,
     truncateTable,
     updatePosition,
+    updateAnswer,
+    getAnswer,
   };
 })();
 

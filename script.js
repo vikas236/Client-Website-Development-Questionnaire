@@ -129,7 +129,7 @@ function addContent() {
 
   dialog_box.classList.add("dialog");
 
-  dialog_box.innerHTML = `<div class="top"><h1 class="title"></h1><h2 class="question"></h2><span  class="examples"></span></div><textarea spellcheck="false"></textarea><button><i class="fa-solid fa-chevron-left"></i></button><button>Next</button>`;
+  dialog_box.innerHTML = `<div class="top"><h1 class="title"></h1><h2 class="question"></h2><span  class="examples"></span></div><input type="text" /><button><i class="fa-solid fa-chevron-left"></i></button><button>Next</button>`;
 
   box.innerHTML = "";
   box.appendChild(dialog_box);
@@ -155,9 +155,10 @@ async function createContent(container) {
   const content = data[section_no][question_no][0];
   const eg = data[section_no][question_no][1];
 
-  contentAnimation(title, titles[0]);
+  contentAnimation(title, titles[section_no]);
   question.innerHTML = content;
   if (eg != undefined) examples.innerHTML = eg;
+  showAnswer(question.innerHTML, input);
   updateContent();
 }
 
@@ -166,7 +167,7 @@ async function updateContent() {
   const title = document.querySelector(".dialog .title");
   const question = document.querySelector(".dialog .question");
   const example = document.querySelector(".dialog span");
-  const input = document.querySelector(".dialog textarea");
+  const input = document.querySelector(".dialog input");
 
   button.forEach((e) => {
     e.addEventListener("click", async () => {
@@ -176,12 +177,17 @@ async function updateContent() {
           section_no < Object.keys(data).length &&
           question_no < data[section_no].length
         ) {
-          ++question_no;
-          disableButton(e);
-          if (question_no == data[section_no].length) {
+          if (question_no < data[section_no].length - 1) {
+            ++question_no;
+            disableButtons(button);
+          }
+          if (
+            question_no == data[section_no].length &&
+            section_no < Object.keys(data).length - 1
+          ) {
             section_no++;
             question_no = 0;
-            disableButton(e);
+            disableButtons(button);
           }
         } else if (
           e.childNodes[0].classList != undefined &&
@@ -190,32 +196,35 @@ async function updateContent() {
         ) {
           if (question_no > 0) {
             --question_no;
-            disableButton(e);
+            disableButtons(button);
           } else if (question_no <= 0 && section_no > 0) {
             --section_no;
             question_no = data[section_no].length - 1;
-            disableButton(e);
+            disableButtons(button);
           }
         }
+
+        if (section_no == 8 && question_no == 2) button[1].innerHTML = "Done";
+        else button[1].innerHTML = "Next";
+
+        saveAnswer(question, input);
+        await serverW.updatePosition(section_no, question_no);
+
+        if (title.innerHTML != titles[section_no])
+          contentAnimation(title, titles[section_no]);
+        if (question.innerHTML != data[section_no][question_no][0])
+          contentAnimation(question, data[section_no][question_no][0]);
+        if (data[section_no][question_no].length == 1) example.innerHTML = "";
+        else if (example.innerHTML != data[section_no][question_no][1]) {
+          disappearnAppear(example);
+          setTimeout(() => {
+            example.innerHTML = data[section_no][question_no][1];
+          }, 500);
+        }
+
+        input.focus();
+        showAnswer(data[section_no][question_no][0], input);
       }
-
-      // await serverW.updatePosition(0, 0);
-
-      if (title.innerHTML != titles[section_no])
-        contentAnimation(title, titles[section_no]);
-      if (question.innerHTML != data[section_no][question_no][0])
-        contentAnimation(question, data[section_no][question_no][0]);
-      if (
-        data[section_no][question_no].length > 1 &&
-        example != data[section_no][question_no][1]
-      ) {
-        disappearnAppear(example);
-        setTimeout(() => {
-          example.innerHTML = data[section_no][question_no][1];
-        }, 500);
-      } else example.innerHTML = "";
-
-      input.focus();
     });
   });
 }
@@ -265,11 +274,21 @@ function disappearnAppear(e) {
   }, 1250);
 }
 
-function disableButton(button) {
-  button.classList.add("inactive");
-  setTimeout(() => {
-    button.classList.remove("inactive");
-  }, 1000);
+function disableButtons(button) {
+  button.forEach((e) => {
+    e.classList.add("inactive");
+    setTimeout(() => {
+      e.classList.remove("inactive");
+    }, 1750);
+  });
 }
 
-// await serverW.createTable("position");
+async function saveAnswer(question, input) {
+  await serverW.updateAnswer(question.innerHTML, input.value);
+}
+
+async function showAnswer(question, input) {
+  await serverW.getAnswer(question).then((result) => {
+    input.value = result.answer;
+  });
+}

@@ -139,12 +139,11 @@ body {
   transition: 0.7s;
 }
 
-.dialog textarea {
+.dialog input {
   width: 100%;
-  height: 85px;
   border-bottom: 1px solid rgba(76, 76, 76);
   padding: 10px 0;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 300;
   margin-top: 40px;
   resize: none;
@@ -188,6 +187,74 @@ body {
   background: rgba(76, 76, 76);
   position: absolute;
   border-radius: 50%;
-  transition: 0.07s;
+  transition: 0.06s;
   opacity: 0;
+}
+
+@media only screen and (max-width: 902px) {
+  .dialog {
+    width: 100%;
+    padding: 0 25px;
+  }
+
+  .dialog h1 {
+    height: fit-content;
+    font-size: 26px;
+    margin-bottom: 35px;
+  }
+
+  .dialog h2 {
+    font-size: 20px;
+    height: fit-content;
+  }
+
+  .dialog span {
+    font-size: 14px;
+  }
+
+  .dialog button {
+    font-size: 28px;
+  }
+
+  .dialog i {
+    font-size: 26px;
+  }
+
+  .dialog button:last-of-type {
+    right: 25px;
+  }
+}
+
+@media only screen and (max-width: 556px) {
+  .dialog {
+    width: 100%;
+    padding: 0 15px;
+  }
+
+  .dialog h1 {
+    height: fit-content;
+    font-size: 24px;
+    margin-bottom: 35px;
+  }
+
+  .dialog h2 {
+    font-size: 17px;
+    height: fit-content;
+  }
+
+  .dialog span {
+    font-size: 12px;
+  }
+
+  .dialog button {
+    font-size: 24px;
+  }
+
+  .dialog i {
+    font-size: 22px;
+  }
+
+  .dialog button:last-of-type {
+    right: 15px;
+  }
 }
