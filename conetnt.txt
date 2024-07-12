@@ -1,0 +1,82 @@
+Business and Goals
+
+    What is the primary purpose of the website?
+        (e.g., informational, e-commerce, portfolio, blog, etc.)
+
+    What are your business goals for this website?
+        (e.g., increase sales, generate leads, provide information, etc.)
+
+    Who is your target audience?
+        (e.g., age, gender, interests, location, etc.)
+
+    What are the key features you need on the website?
+        (e.g., contact form, booking system, e-commerce functionality, blog, etc.)
+
+Design and Branding
+
+    Do you have an existing brand or style guide?
+        (e.g., logo, color scheme, fonts, etc.)
+
+    Can you provide examples of websites you like and why?
+
+    What kind of look and feel do you want for your website?
+        (e.g., modern, traditional, minimalist, vibrant, etc.)
+
+Content
+
+    Do you have existing content that will be used on the website?
+        (e.g., text, images, videos, etc.)
+
+    Will you need help creating or curating content?
+
+    How many pages do you anticipate needing?
+        (e.g., Home, About, Services, Contact, etc.)
+
+Functionality and Features
+
+    What specific functionality do you require?
+        (e.g., user login, online payments, blog, social media integration, etc.)
+
+    Do you need any special features?
+        (e.g., appointment booking, custom forms, interactive maps, etc.)
+
+Technical Requirements
+
+    Do you have a preferred platform or CMS?
+        (e.g., WordPress, Shopify, custom-built, etc.)
+
+    Do you have a domain name and hosting provider?
+        (If yes, get the details; if no, offer assistance in selecting and setting them up.)
+
+    Do you have any specific security requirements?
+
+Maintenance and Updates
+
+    How often do you anticipate needing updates or changes to the website?
+
+    Will you need ongoing maintenance and support?
+        (e.g., updates, backups, security checks, etc.)
+
+SEO and Analytics
+
+    Do you have any SEO (Search Engine Optimization) requirements?
+
+    Will you need analytics setup to track website performance?
+        (e.g., Google Analytics, other tracking tools)
+
+Timeline and Budget
+
+    What is your desired launch date for the website?
+
+    What is your budget for this project?
+
+Additional Information
+
+    Are there any competitors' websites you want to stand out from or align with?
+
+    Do you have any specific legal or compliance requirements?
+        (e.g., GDPR, accessibility standards, etc.)
+
+    Is there anything else you want to share about your vision or expectations?
+
+By asking these questions, you can gather comprehensive information to create a website that meets the client's needs and expectations effectively.

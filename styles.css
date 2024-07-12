@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  transition: 0.5s;
+  cursor: none !important;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 200px;
+  height: 53px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.07);
+  transition: width 0.5s ease-in-out 1.3s, height 0.5s ease-in-out 1.3s,
+    background-color 0.5s ease-in-out 1.3s, opacity 1s ease-in-out 1.3s,
+    border-radius 0.5s ease-in-out 1.15s;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.07);
+}
+
+.container.active {
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  opacity: 0;
+  border-radius: 25px;
+}
+
+.container > button {
+  width: 100%;
+  height: 100%;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 32px;
+  font-weight: 700;
+  background: none;
+  text-align: center;
+  position: relative;
+  transition: 0.3s;
+  left: 0;
+  padding: 3px 15px;
+  display: flex;
+  align-items: center;
+  padding-right: 0px;
+}
+
+.container.active > button {
+  left: -150px;
+}
+
+.break {
+  width: 3px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  margin-left: 15px;
+  position: relative;
+  /* top: 2px; */
+}
+
+.ham {
+  width: 55px;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: height 0.3s ease-in-out 0.7s, left 0.3s ease-in-out 0s,
+    opacity 0.7s ease-in-out 0.7s;
+  position: relative;
+  left: -12px;
+}
+
+.bar,
+.bar::after {
+  content: "";
+  width: 5px;
+  height: 100%;
+  background: rgba(76, 76, 76);
+  position: absolute;
+  transform: rotate(45deg);
+}
+
+.bar:after {
+  position: absolute;
+  transform: rotate(90deg);
+  left: 0px;
+}
+
+.container.active .ham {
+  width: 200px;
+  height: 60%;
+  left: -68px;
+  opacity: 0;
+}
+
+.dialog {
+  width: 750px;
+  height: fit-content;
+  position: relative;
+  opacity: 0;
+  transition: 0.7s;
+}
+
+.dialog .top {
+  height: 125px;
+}
+
+.dialog h1 {
+  height: 75px;
+}
+
+.dialog h2 {
+  height: 35px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.dialog span {
+  height: 50px;
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 15px;
+  transition: 0.7s;
+}
+
+.dialog textarea {
+  width: 100%;
+  height: 85px;
+  border-bottom: 1px solid rgba(76, 76, 76);
+  padding: 10px 0;
+  font-size: 28px;
+  font-weight: 300;
+  margin-top: 40px;
+  resize: none;
+}
+
+.dialog button {
+  width: fit-content;
+  height: fit-content;
+  background: rgba(0, 0, 0, 0.07);
+  padding: 0 17px;
+  margin-top: 25px;
+  border-radius: 10px;
+  font-size: 32px;
+}
+
+.dialog button:active {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.dialog button.inactive {
+  background: rgba(0, 0, 0, 0.3);
+  color: grey;
+}
+
+.dialog i {
+  font-size: 32px;
+  padding: 8px 0;
+  color: rgba(76, 76, 76);
+}
+
+.dialog button:last-of-type {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: none;
+}
+
+.cursor {
+  width: 11px;
+  height: 11px;
+  background: rgba(76, 76, 76);
+  position: absolute;
+  border-radius: 50%;
+  transition: 0.07s;
+  opacity: 0;
+}
