@@ -117,9 +117,6 @@ function start() {
       addContent();
     }, 2000);
   });
-  setTimeout(() => {
-    container.click();
-  }, 50);
 }
 start();
 
