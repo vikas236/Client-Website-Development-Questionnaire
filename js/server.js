@@ -1,6 +1,6 @@
 // const url = "http://localhost:3000";
 const url =
-  "https://client-website-development-questionnaire-server.vercel.app/";
+  "https://client-website-development-questionnaire-server.vercel.app";
 
 const serverW = (() => {
   async function getTable(table_name) {
