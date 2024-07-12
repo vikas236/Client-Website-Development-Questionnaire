@@ -200,7 +200,7 @@ body {
   .dialog h1 {
     height: fit-content;
     font-size: 26px;
-    margin-bottom: 35px;
+    margin-bottom: 25px;
   }
 
   .dialog h2 {
@@ -223,6 +223,11 @@ body {
   .dialog button:last-of-type {
     right: 25px;
   }
+
+  .dialog input {
+    margin-top: 25px;
+    font-size: 26px;
+  }
 }
 
 @media only screen and (max-width: 556px) {
@@ -231,10 +236,14 @@ body {
     padding: 0 15px;
   }
 
+  .dialog .content {
+    height: 75px;
+  }
+
   .dialog h1 {
     height: fit-content;
     font-size: 24px;
-    margin-bottom: 35px;
+    margin-bottom: 15px;
   }
 
   .dialog h2 {
@@ -256,5 +265,10 @@ body {
 
   .dialog button:last-of-type {
     right: 15px;
+  }
+
+  .dialog input {
+    font-size: 22px;
+    margin-top: 10px;
   }
 }
