@@ -138,6 +138,7 @@ async function createContent(container) {
   const question = container.childNodes[0].childNodes[1];
   const examples = container.childNodes[0].childNodes[2];
   const input = container.childNodes[2];
+  const button = document.querySelectorAll(".dialog button");
   input.focus();
 
   setTimeout(() => {
@@ -157,7 +158,12 @@ async function createContent(container) {
   if (eg != undefined) examples.innerHTML = eg;
   showAnswer(question.innerHTML, input);
   updateContent();
+
+  if (section_no == 8 && question_no == 2) button[1].innerHTML = "Done";
+  else button[1].innerHTML = "Next";
 }
+
+// await serverW.updatePosition(8, 2).then((response) => console.log(response));
 
 async function updateContent() {
   const button = document.querySelectorAll(".dialog button");
@@ -168,16 +174,15 @@ async function updateContent() {
 
   button.forEach((e) => {
     e.addEventListener("click", async () => {
-      if (!e.classList.contains("inactive")) {
+      if (!e.classList.contains("inactive") && e.innerHTML != "Done") {
         if (
           e.childNodes[0].classList == undefined &&
           section_no < Object.keys(data).length &&
           question_no < data[section_no].length
         ) {
-          if (question_no < data[section_no].length - 1) {
-            ++question_no;
-            disableButtons(button);
-          }
+          ++question_no;
+          disableButtons(button);
+
           if (
             question_no == data[section_no].length &&
             section_no < Object.keys(data).length - 1
@@ -205,7 +210,6 @@ async function updateContent() {
         else button[1].innerHTML = "Next";
 
         saveAnswer(question, input);
-        await serverW.updatePosition(section_no, question_no);
 
         if (title.innerHTML != titles[section_no])
           contentAnimation(title, titles[section_no]);
@@ -219,8 +223,10 @@ async function updateContent() {
           }, 500);
         }
 
+        await serverW.updatePosition(section_no, question_no);
         input.focus();
         showAnswer(data[section_no][question_no][0], input);
+        enableButtons(button);
       }
     });
   });
@@ -274,9 +280,14 @@ function disappearnAppear(e) {
 function disableButtons(button) {
   button.forEach((e) => {
     e.classList.add("inactive");
+  });
+}
+
+function enableButtons(button) {
+  button.forEach((e) => {
     setTimeout(() => {
       e.classList.remove("inactive");
-    }, 1750);
+    }, 500);
   });
 }
 
