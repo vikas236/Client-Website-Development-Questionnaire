@@ -148,7 +148,6 @@ async function createContent(container) {
   await serverW.getTable("position").then((result) => {
     section_no = result[0].section_no;
     question_no = result[0].question_no;
-    console.log(section_no, question_no);
   });
 
   const content = data[section_no][question_no][0];

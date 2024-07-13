@@ -230,6 +230,4 @@ const serverW = (() => {
   };
 })();
 
-await serverW.test().then((data) => console.log(data));
-
 export default serverW;
