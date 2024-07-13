@@ -126,7 +126,7 @@ function addContent() {
 
   dialog_box.classList.add("dialog");
 
-  dialog_box.innerHTML = `<div class="top"><h1 class="title"></h1><h2 class="question"></h2><span  class="examples"></span></div><input type="text" /><button><i class="fa-solid fa-chevron-left"></i></button><button>Next</button>`;
+  dialog_box.innerHTML = `<div class="top"><h1 class="title"></h1><h2 class="question"></h2><span class="examples"></span></div><input type="text" /><button><i class="fa-solid fa-chevron-left"></i></button><button>Next</button>`;
 
   box.innerHTML = "";
   box.appendChild(dialog_box);
@@ -148,6 +148,7 @@ async function createContent(container) {
   await serverW.getTable("position").then((result) => {
     section_no = result[0].section_no;
     question_no = result[0].question_no;
+    console.log(section_no, question_no);
   });
 
   const content = data[section_no][question_no][0];
@@ -162,8 +163,6 @@ async function createContent(container) {
   if (section_no == 8 && question_no == 2) button[1].innerHTML = "Done";
   else button[1].innerHTML = "Next";
 }
-
-// await serverW.updatePosition(8, 2).then((response) => console.log(response));
 
 async function updateContent() {
   const button = document.querySelectorAll(".dialog button");
@@ -300,3 +299,5 @@ async function showAnswer(question, input) {
     input.value = result.answer;
   });
 }
+
+// await serverW.updatePosition(8, 2).then((response) => console.log(response));
