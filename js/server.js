@@ -3,6 +3,16 @@ const url =
   "https://client-website-development-questionnaire-server.vercel.app";
 
 const serverW = (() => {
+  async function test() {
+    // Fetch column data from the backend and return a promise
+    const response = await fetch(`${url}/`);
+    // Check if the response is successful
+    if (!response.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    return await response.json();
+  }
+
   async function getTable(table_name) {
     const requestData = {
       tableName: table_name,
@@ -208,6 +218,7 @@ const serverW = (() => {
   }
 
   return {
+    test,
     getTable,
     createTable,
     removeTable,
@@ -218,5 +229,7 @@ const serverW = (() => {
     getAnswer,
   };
 })();
+
+await serverW.test().then((data) => console.log(data));
 
 export default serverW;
