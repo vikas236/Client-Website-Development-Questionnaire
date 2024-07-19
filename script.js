@@ -225,6 +225,20 @@ async function updateContent() {
         input.focus();
         showAnswer(data[section_no][question_no][0], input);
         enableButtons(button);
+      } else if (e.innerHTML == "Done") {
+        const container = document.querySelector(".dialog");
+        container.innerHTML = `<i class="fa-solid fa-hippo tilt"></i><h3>Completed</h3><div class="restart">Restart</div>`;
+        setTimeout(() => {
+          container.childNodes[0].classList.add("active");
+          setTimeout(() => {
+            container.childNodes[0].classList.remove("tilt");
+          }, 1000);
+          container.childNodes[1].classList.add("active");
+        }, 500);
+
+        container.childNodes[2].addEventListener("click", () => {
+          window.location.reload();
+        });
       }
     });
   });

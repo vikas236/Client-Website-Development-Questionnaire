@@ -112,10 +112,12 @@ body {
 
 .dialog {
   width: 750px;
+  min-height: 250px;
   height: fit-content;
   position: relative;
   opacity: 0;
   transition: 0.7s;
+  overflow: hidden;
 }
 
 .dialog .top {
@@ -189,6 +191,60 @@ body {
   border-radius: 50%;
   transition: 0.06s;
   opacity: 0;
+}
+
+.fa-hippo {
+  position: absolute;
+  left: -500px;
+  top: 50%;
+  transform: translate(-50%, -100%);
+  transition: 0.5s;
+}
+
+.fa-hippo.active {
+  left: 50% !important;
+  font-size: 64px;
+}
+
+.fa-hippo.active.tilt {
+  transform: translate(-50%, -100%) rotate(-15deg);
+}
+
+h3 {
+  width: fit-content;
+  height: fit-content;
+  color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: 0.5s;
+  position: absolute;
+  inset: 50%;
+  transform: translate(-50%, 0%);
+  padding: 5px 15px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+h3.active {
+  opacity: 1;
+}
+
+.restart {
+  width: fit-content;
+  height: fit-content;
+  background: rgba(0, 0, 0, 0.07);
+  color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  inset: 50%;
+  transform: translate(-50%, 50px);
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 5px 25px;
+  border-radius: 10px;
+}
+
+.restart:active {
+  background: rgba(0, 0, 0, 0.3);
 }
 
 @media only screen and (max-width: 902px) {
