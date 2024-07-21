@@ -239,6 +239,8 @@ async function updateContent() {
         container.childNodes[2].addEventListener("click", () => {
           window.location.reload();
         });
+
+        await serverW.updatePosition(0, 0);
       }
     });
   });
